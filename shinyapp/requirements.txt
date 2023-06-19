@@ -1,0 +1,9 @@
+shiny>=0.2.7
+numpy>=1.23.3
+matplotlib>=3.6.0
+scikit-image>=0.20.0
+shinyswatch
+requests
+shinywidgets
+plotly
+python-dotenv
