@@ -7,3 +7,4 @@ requests
 shinywidgets
 plotly
 python-dotenv
+itables

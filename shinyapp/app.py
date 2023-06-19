@@ -15,6 +15,9 @@ from shinywidgets import output_widget, register_widget
 from plotly import graph_objects as go
 from utils import *
 from dotenv import load_dotenv
+from itables.sample_dfs import get_dict_of_test_dfs
+from itables.shiny import DT
+
 
 def nav_controls(prefix: str) -> List[NavSetArg]:
     return [
@@ -39,7 +42,7 @@ def nav_controls(prefix: str) -> List[NavSetArg]:
             ) 
         ), 
         ui.nav(
-        "Widgets",
+            "Widgets",
             output_widget("fig", width='1200px', height='1200px'), 
         ),     
         ui.nav(
@@ -67,6 +70,14 @@ def nav_controls(prefix: str) -> List[NavSetArg]:
                 )   
             )
         ),
+
+        ui.nav(
+            "iTables",
+            ui.navset_tab(
+                *[ui.nav(name, ui.HTML(DT(df))) for name, df in get_dict_of_test_dfs().items()]
+            )
+        ),
+
         ui.nav_control(
             ui.a(
                 "Py-Shiny",
